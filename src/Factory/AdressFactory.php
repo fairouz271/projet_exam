@@ -32,9 +32,9 @@ final class AdressFactory extends PersistentProxyObjectFactory
     protected function defaults(): array|callable
     {
         return [
-            'adress' => self::faker()->text(255),
-            'altitude' => self::faker()->randomFloat(),
-            'longitude' => self::faker()->randomFloat(),
+            'adress' => self::faker()->address(255),
+            'altitude' => self::faker()->randomFloat(2, 45.3, 46.1),
+            'longitude' => self::faker()->randomFloat(2, 2.5, 4.0),
         ];
     }
 

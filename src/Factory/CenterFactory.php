@@ -32,11 +32,20 @@ final class CenterFactory extends PersistentProxyObjectFactory
     protected function defaults(): array|callable
     {
         return [
-            'adress' => AdressFactory::new(),
-            'imagePath' => self::faker()->text(255),
-            'name' => self::faker()->text(255),
-            'phoneNumber' => self::faker()->randomNumber(),
-            'schedules' => self::faker()->text(),
+            'adress' =>  AdressFactory::random(),
+            'path' => "https://picsum.photos/200/300",
+            'name' => self::faker()->text(50),
+            'phoneNumber' => self::faker()->mobileNumber(), // "07## ## ## ##"
+            'schedules' => [
+        'lundi'     => self::faker()->boolean(90) ? '08:00 - 18:00' : 'Fermé',
+        'mardi'     => self::faker()->boolean(90) ? '08:00 - 18:00' : 'Fermé',
+        'mercredi'  => self::faker()->boolean(70) ? '08:30 - 12:00' : 'Fermé',
+        'jeudi'     => self::faker()->boolean(90) ? '08:00 - 18:00' : 'Fermé',
+        'vendredi'  => self::faker()->boolean(90) ? '08:00 - 17:00' : 'Fermé',
+        'samedi'    => self::faker()->boolean(60) ? '10:00 - 16:00' : 'Fermé',
+        'dimanche'  => 'Fermé',
+    ],
+            'price' => self::faker()->numberBetween(1,50)
         ];
     }
 

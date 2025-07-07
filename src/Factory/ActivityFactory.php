@@ -32,8 +32,9 @@ final class ActivityFactory extends PersistentProxyObjectFactory
     protected function defaults(): array|callable
     {
         return [
-            'description' => self::faker()->text(),
+            'description' => self::faker()->paragraph(),
             'name' => self::faker()->text(255),
+            'path' => "https://picsum.photos/200/300",
         ];
     }
 

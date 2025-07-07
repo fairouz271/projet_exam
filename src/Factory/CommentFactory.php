@@ -32,7 +32,14 @@ final class CommentFactory extends PersistentProxyObjectFactory
     protected function defaults(): array|callable
     {
         return [
-            'publicationDate' => self::faker()->dateTime(),
+
+            'user' => UserFactory::random(),
+            'center' => CenterFactory::random(),
+            'publicationDate' => self::faker()->dateTimeBetween('-5 years', 'now')->format('Y-m-d H:i:s'),
+             'countent' => self::faker()->text(255),
+             'rating' => self::faker()->numberBetween(1, 5) . '/5',
+
+
         ];
     }
 
